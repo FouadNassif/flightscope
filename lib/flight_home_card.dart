@@ -29,7 +29,7 @@ class FlightHomeCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 1.0), // Black border
+          border: Border.all(color: Colors.black, width: 1.0),
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Column(
@@ -41,11 +41,16 @@ class FlightHomeCard extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      departureCity,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    Container(
+                      width: 100,
+                      child: Text(
+                        departureCity,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Text(
@@ -61,11 +66,20 @@ class FlightHomeCard extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
-                      arrivalCity,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        width: 100,
+                        child: Text(
+                          arrivalCity,
+                          textAlign: TextAlign.right, // Align text to the right
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
                     Text(
@@ -79,8 +93,7 @@ class FlightHomeCard extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 8.0), // Adjusted spacing
-            // Separator line between destination and time
+            const SizedBox(height: 8.0),
             const Divider(thickness: 1, color: Colors.black),
             const SizedBox(height: 16.0),
             // Departure and Arrival Times
@@ -128,7 +141,6 @@ class FlightHomeCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16.0),
-            // Horizontal Line with Airplane Icon in the Middle
             const Row(
               children: [
                 Expanded(
@@ -188,7 +200,8 @@ class FlightHomeCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: flightStatus == "ON-TIME"
+                        color: (flightStatus == "landed" ||
+                                flightStatus == "active")
                             ? Colors.green
                             : Colors.red,
                       ),
