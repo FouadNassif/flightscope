@@ -68,7 +68,7 @@ Open the project in Android Studio:
     - Add the API key to your project:
 
         - Open the file where you make the API requests (e.g., lib/api/all_flights.dart).
-
+        - Create a new file .env And place you're apikey there.
         - Replace the placeholder API key with your actual key:
 
 ```bash 
