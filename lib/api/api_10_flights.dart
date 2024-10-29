@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<List<Flight>> fetchFlights() async {
   final response = await http.get(
-    Uri.parse('https://api.aviationstack.com/v1/flights?access_key=666977412562e42e1d0e1a8c0f4a3763&limit=10'),
+    Uri.parse(
+        'https://api.aviationstack.com/v1/flights?access_key=${dotenv.env['API_KEY']}&limit=10'),
   );
 
   if (response.statusCode == 200) {

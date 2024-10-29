@@ -6,8 +6,10 @@ import 'package:flightscope/tickets_page.dart';
 import 'package:flightscope/flight_home_card.dart';
 import 'package:flightscope/api/api_10_flights.dart';
 import 'package:flightscope/tab.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: "lib/.env");
   runApp(const MyApp());
 }
 
@@ -18,7 +20,7 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> {``
   late Future<List<Flight>> futureFlights;
   bool autoRefreshEnabled = false; // Track if auto-refresh is enabled
   Timer? _timer; // Timer for auto-refresh
